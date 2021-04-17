@@ -6,8 +6,6 @@ describe("detect drivers and recrod history", () => {
       Lauren: { mins: 15, miles: 42, mph: 168 },
       Kumi: { mins: 0, miles: 0, mph: 0 },
     };
-    expect(functions.writeToFile(state)).toMatch(/Kumi/);
-    expect(functions.writeToFile(state)).toMatch(/Lauren/);
     expect(functions.writeToFile(state)).toMatch(/Dan/);
   });
 

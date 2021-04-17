@@ -26,7 +26,7 @@ readInterface.on("line", function (line) {
 });
 
 readInterface.on("close", function () {
-  fs.writeFile("output.txt", writeToFile(state), function (err) {
+  fs.writeFile("output.txt", writeToFile(discardMph(state)), function (err) {
     if (err) {
       return console.log(err);
     }
@@ -35,6 +35,16 @@ readInterface.on("close", function () {
 
 function speed(distance, minutes) {
   return Math.round(parseFloat(distance) / (parseFloat(minutes) / 60.0));
+}
+
+function discardMph(state) {
+  for (prop in state) {
+    let mph = state[prop]["mph"];
+    if (mph > 100 || mph < 5) {
+      delete state[prop];
+    }
+  }
+  return state;
 }
 
 function writeToFile(state) {
