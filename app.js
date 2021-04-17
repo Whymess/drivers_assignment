@@ -75,4 +75,5 @@ module.exports = {
   timeDriving,
   writeToFile,
   speed,
+  discardMph,
 };
